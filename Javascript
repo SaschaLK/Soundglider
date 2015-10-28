@@ -1,0 +1,21 @@
+Einarbeitung in Objekte ist im Gang
+Bewegung über x,y Koordinaten
+
+
+(function() {
+
+/* Glider deklaration und Bewegungsattribute
+*/
+
+function glider (config,    ... ) {
+      
+}
+glider.config = {
+
+
+
+
+};
+
+    }
+)
