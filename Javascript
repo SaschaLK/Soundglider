@@ -6,16 +6,39 @@ Bewegung über x,y Koordinaten
 
 /* Glider deklaration und Bewegungsattribute
 */
+var glider = function (glider-config, optcon) {
+      if (glider_instanz) {
+      return glider_instanz; 
+            }
+      }; 
 
-function glider (config,    ... ) {
-      
+glider_instanz = this;
+
+this.config = glider-config  || optcon;
+
+
+this.glider 
+
+
+this.glider-congfig = {
+      speed : 2,
+      height : x,
+      height : y
+
+
 }
+
+
+glider = 0
+
 glider.config = {
 
 
 
 
 };
+
+var FPS = 60;
 
     }
 )
