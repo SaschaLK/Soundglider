@@ -9,12 +9,25 @@
 	</head>
 	
 	<body>
-	test123
-	<p>
-	<table align=center>
-	<tr> <td> hello </td> <td>world</td> </tr>
-	<tr> <td> how are </td> <td> you</td> </tr>
-	</table>
+		<div id=einleitung>
+			<p id=start>
+				Willkommen zu SOUNDGLIDER
+			</p>
+			<p id=startknopf align=center>
+				<a href="NEXT SITE">Start</a>
+			</p>
+		</div>
+		
+		<hr>
+		
+		<div id=end>
+			<p id=impressum>
+				<table align=center>
+				<tr> <td>Filler</td> <td>Filler</td> <td>Filler</td> <td>Filler</td> </tr>
+				</table>
+			</p>
+		</div>
+		
 	</body>
 
 </html>
