@@ -28,9 +28,11 @@
 		</nav>
 
 		<section>
-			<p id=startknopf>
-				<a href="GAMESTART????"><img src=PlatzhalterStartKnopf.png></a>
-			</p>
+			<div id=startknopf align=center>
+				<p>
+					<a href="GAMESTART????"><img src=PlatzhalterStartKnopf.png></a>
+				</p>
+			</div>
 		</section>
 		
 		<hr>
