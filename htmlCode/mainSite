@@ -9,24 +9,46 @@
 	</head>
 	
 	<body>
-		<div id=einleitung>
-			<p id=start>
-				Willkommen zu SOUNDGLIDER
+	
+		<header>
+			<div id=einleitung>
+				<p id=start>
+					Willkommen zu SOUNDGLIDER
+				</p>
+			</div>
+		</header>
+		
+		<nav>
+			<table> 
+				<tr>
+					<td><a href=Main.html>Startseite</a></td> 
+					<td><a href=Bts.html>Behind the scenes</a></td> 
+					<td><a href=Sonstiges.html>Sonstiges</a></td>
+				</tr>
+		</nav>
+
+		<section>
+			<p id=startknopf>
+				<a href="GAMESTART????"><img src=PlatzhalterStartKnopf.png></a>
 			</p>
-			<p id=startknopf align=center>
-				<a href="NEXT SITE">Start</a>
-			</p>
-		</div>
+		</section>
 		
 		<hr>
 		
-		<div id=end>
-			<p id=impressum>
-				<table align=center>
-				<tr> <td>Filler</td> <td>Filler</td> <td>Filler</td> <td>Filler</td> </tr>
-				</table>
-			</p>
-		</div>
+		<footer>
+			<div id=end>
+				<p id=impressum>
+					<table align=center>
+					</tr>
+						<td><a href=Impressum.html>Impressum</a></td>
+						<td><a href=Thanks.html>Thanks</a></td>
+						<td><a href=Hilfe.html>Hilfe</a></td>
+						<td><a href=Rechte.html>Rechte</a></td>
+					</tr>
+					</table>
+				</p>
+			</div>
+		</footer>
 		
 	</body>
 
