@@ -1,12 +1,12 @@
 Einarbeitung in Objekte ist im Gang
-Bewegung über x,y Koordinaten
+
 
 
 (function() {
 
 /* Glider deklaration und Bewegungsattribute
 */
-var glider = function (glider-config, optcon) {
+var glider = function (Container_id, optcon) {
       if (glider_instanz) {
       return glider_instanz; 
             }
@@ -14,31 +14,85 @@ var glider = function (glider-config, optcon) {
 
 glider_instanz = this;
 
-this.config = glider-config  || optcon;
-
+this.config = optcon ;
 
 this.glider 
+this.distanceMeter = null;
+this.distanceRan = 0;
 
+this.gestartet = false ;
+this.crashed = false;
+this.pause = false;
+this.aktiv = false;
 
-this.glider-congfig = {
-      speed : 2,
-      height : x,
-      height : y
+this.hinderniss = [];
 
+this.time = 0;
+this.glideTime = 0;
+this.msperFrame = 1000 / FPS;
+this.currentSpeed = this.optcon.SPEED;
 
-}
+this.playCount = 0;
 
+var is_HIDPI = 
 
-glider = 0
+var is_Touch = 
 
-glider.config = {
+var is_IOS = 
 
+var is_Mobile = 
 
+var FPS = 60;
+
+var DEFAULT_WIDTH = 1000;
+
+glider.defaultDimensons = {
+      WIDTH = DEFAULT_WIDTH;
+      HEIGHT = 200; 
+};
+
+glider.optcon = {
+      SPEED:  ,
+      MAX_SPEED:  ,
+      GRAVITY:  ,
+      MIN_JUMP_HEIGHT:   ,
+      INITIAL_JUMP_VELOCITY:   ,
+      SPEED_DROP_COEFFICIENT:  ,
+      ACCELERATION:   ,
+      MAX_HINDERNISS_LENGTH: ,
+      MAX_HINDERNISS_DUPLICATION: ,
+      MOBILE_SPEED_COEFFICIENT:   ,
+      
+      ....
 
 
 };
 
-var FPS = 60;
+glider.hindernissDefinition = {
+
+
+....
+
+};
+
+
+glider.Tasten = {
+  JUMP: {'38': 1, '32': 1},  // Pfeil-hoch, Leerstaste
+  DUCK: {'40': 1},  // Pfeil_runter
+  RESTART: {'13': 1}  // Enter
+};
+
+glider.events = {
+  CLICK: 'click',
+  KEYDOWN: 'keydown',
+  KEYUP: 'keyup',
+  MOUSEDOWN: 'mousedown',
+  MOUSEUP: 'mouseup',
+  TOUCHEND: ,
+  TOUCHSTART: ,
+....
+
+};
 
     }
 )
