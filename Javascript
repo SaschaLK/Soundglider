@@ -59,8 +59,6 @@ glider.optcon = {
       INITIAL_JUMP_VELOCITY:   ,
       SPEED_DROP_COEFFICIENT:  ,
       ACCELERATION:   ,
-      MAX_HINDERNISS_LENGTH: ,
-      MAX_HINDERNISS_DUPLICATION: ,
       MOBILE_SPEED_COEFFICIENT:   ,
       
       ....
