@@ -1,26 +1,35 @@
 body {
 	font-family: "Helvetica";
 	background-color : black;
-	color : green;
+	color : #0d96f2;
 }
 
 a:link {
-	color: green;
+	color: #0d96f2;
+	text-decoration: none;
 }
 
 a:visited {
-	color: red;
+	color: #4d8ab3;
+	text-decoration: none;
 }
 
 a:hover {
-	color: white;
+	color: #ccebff;
 }
 
 a:active {
-	color: blue;
+	color: #89caf5;
 }
 
 #startknopf {
+    position:absolute;
+    top:39%;
+    left:0;
+    right:0;
+}
+
+#game {
     position:absolute;
     top:39%;
     left:0;
