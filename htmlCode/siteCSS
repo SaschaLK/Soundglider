@@ -20,6 +20,20 @@ a:active {
 	color: blue;
 }
 
+#startknopf {
+    position:absolute;
+    top:39%;
+    left:0;
+    right:0;
+}
+
+#end {
+   position:absolute;
+   bottom:1%;
+   left:0;
+   right:0;
+}
+
 /*
 div.startknopf {
 	height: 10em;
