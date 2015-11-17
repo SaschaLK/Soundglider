@@ -1,12 +1,14 @@
-Einarbeitung in Objekte ist im Gang
+Einarbeitung in Javascript ist im Gang
 
+Noch unklar wie die Bewegung genau umsetzbar ist,
+Ich habe im moment eine gewisse Vorstellung (Bild bewegt sich nicht die Figur)
 
 
 (function() {
 
 /* Glider deklaration und Bewegungsattribute
 */
-var glider = function (Container_id, optcon) {
+var glider = function (Container_id, optconfig) {
       if (glider_instanz) {
       return glider_instanz; 
             }
@@ -14,11 +16,11 @@ var glider = function (Container_id, optcon) {
 
 glider_instanz = this;
 
-this.config = optcon ;
+this.config = optconfig ;
 
 this.glider 
-this.distanceMeter = null;
-this.distanceRan = 0;
+this.distanzMeter = 0;
+this.distanzGelaufen = 0;
 
 this.gestartet = false ;
 this.crashed = false;
@@ -27,39 +29,48 @@ this.aktiv = false;
 
 this.hinderniss = [];
 
-this.time = 0;
-this.glideTime = 0;
+this.zeit = 0;
+this.gliderZeit = 0;
 this.msperFrame = 1000 / FPS;
-this.currentSpeed = this.optcon.SPEED;
+this.aktuelleGeschw. = this.optcon.GESCHW;
 
 this.playCount = 0;
 
-var is_HIDPI = 
+//Display Anpassung - noch unklar wie es umsetzbar ist
+------------------------------------------------
+var isHIDPI = ????
 
-var is_Touch = 
+var isTouch = ????
 
-var is_IOS = 
+var isIOS = ????
 
-var is_Mobile = 
+var isMobile = ????
+
+
+--------------------------------------------------
 
 var FPS = 60;
 
-var DEFAULT_WIDTH = 1000;
+var STANDARD_BREITE = 1000;
 
-glider.defaultDimensons = {
-      WIDTH = DEFAULT_WIDTH;
-      HEIGHT = 200; 
+glider.standardDimensionen = {
+     BREITE = STANDARD_BREITE;
+     HÖHE = 300; 
 };
 
+---------------------------------------------------
+
+// Variabeln kommen noch nach absprache, muss erstmal gucken wie ich die Bewegung hinbekomme
+
 glider.optcon = {
-      SPEED:  ,
-      MAX_SPEED:  ,
+      GESCHW:  ,
+      MAX_GESCHW:  ,
       GRAVITY:  ,
-      MIN_JUMP_HEIGHT:   ,
-      INITIAL_JUMP_VELOCITY:   ,
-      SPEED_DROP_COEFFICIENT:  ,
-      ACCELERATION:   ,
-      MOBILE_SPEED_COEFFICIENT:   ,
+      MIN_SPRUNG_HÖHE:   ,
+      INITIAL_SPRUNG_SCHWUNG:   ,
+      GESCHW_FALL_KOEFFIZIENT:  ,
+      BESCHLEUNIGUNG:   ,
+      MOBILE_GESCHW_KOEFFIZIENT:   ,
       
       ....
 
@@ -73,15 +84,17 @@ glider.hindernissDefinition = {
 
 };
 
+-------------------------------------------------------------------------
+
 // Bewegung bei Pc, touch kommt noch
 
 glider.Tasten = {
-  JUMP: {'38': 1, '32': 1},  // Pfeil-hoch, Leerstaste
-  DUCK: {'40': 1},  // Pfeil_runter
+  SPRINGEN: {'38': 1, '32': 1},  // Pfeil-hoch, Leerstaste
+  DUCKEN: {'40': 1},  // Pfeil_runter
   RESTART: {'13': 1}  // Enter
 };
 
-
+//Weitere Events möglich
 
 glider.events = {
   CLICK: 'click',
@@ -96,7 +109,7 @@ glider.events = {
 };
 
 
-// Canvas ???? 
+// Canvas ???? Platzhalter
 
 var canvas = document.getElementById('canvas');
 if (canvas && canvas.getContext) {
@@ -108,6 +121,20 @@ if (canvas && canvas.getContext) {
       return canvas;
     }
 }
+
+// Draw-Glider
+
+.....
+
+
+//Hindernisse bzw Grösse und Höhe noch unklar sowie Position
+
+hinderniss.blockKlein = .... ;
+hinderniss.blockGross = ...;
+
+// Kollisionsabfrage 
+
+.....
 
 
 
