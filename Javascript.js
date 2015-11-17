@@ -89,8 +89,17 @@ glider.hindernissDefinition = {
 
 -------------------------------------------------------------------------
 
-// Bewegung bei Pc, touch kommt noch
+// Alternative, Steuerung mit Maus anstatt Tastatur vielleciht sogar umsetzbar mit TOUCH - Work-in-Progress
 
+var tx = targetX - x,
+    ty = targetY - y,
+    dist = Math.sqrt(tx*tx+ty*ty);
+  
+velX = (tx/dist)*thrust;
+velY = (ty/dist)*thrust;
+
+--------------------------------------------------------------------
+// Bewegung bei Pc, touch kommt noch
 glider.Tasten = {
   SPRINGEN: {'38': 1, '32': 1},  // Pfeil-hoch, Leerstaste
   DUCKEN: {'40': 1},  // Pfeil_runter
@@ -135,9 +144,11 @@ if (canvas && canvas.getContext) {
 hinderniss.blockKlein = .... ;
 hinderniss.blockGross = ...;
 
-// Kollisionsabfrage 
+// Kollisionsabfrage mit Hindernissen Work-in-Progress
 
-.....
+var x = x2 - x1,
+    y = y2 - y1,
+    distance = Math.sqrt(x*x + y*y);
 
 
 
