@@ -1,8 +1,11 @@
+
+/*
 Einarbeitung in Javascript ist im Gang
 
 Noch unklar wie die Bewegung genau umsetzbar ist,
 Ich habe im moment eine gewisse Vorstellung (Bild bewegt sich nicht die Figur)
 
+*/
 
 (function() {
 
