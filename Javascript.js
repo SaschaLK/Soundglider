@@ -45,6 +45,21 @@ this.aktuelleGeschw. = this.optcon.GESCHW;
 
 this.playCount = 0;
 
+// Bilder
+
+this.bilder= {};
+this.bilderLaden= 0;
+
+if (this.isDisabled()) {
+      this.ladeInaktivGlider();
+} else {
+      this.bilderLaden();
+}
+
+}
+
+window['gLIDER'] =gLIDER;
+
 //Display Anpassung - noch unklar wie es umsetzbar ist
 ------------------------------------------------
 var isHIDPI = ????
@@ -57,8 +72,6 @@ var isMobile = ????
 
 
 --------------------------------------------------
-
-window['gLIDER'] =gLIDER;
 
 var FPS = 60;
 
@@ -123,8 +136,8 @@ glider.events = {
   KEYUP: 'keyup',
   MOUSEDOWN: 'mousedown',
   MOUSEUP: 'mouseup',
-  TOUCHEND: ,
-  TOUCHSTART: ,
+  TOUCHEND: 'touchend',
+  TOUCHSTART: 'touchstart',
 ....
 
 };
@@ -177,6 +190,24 @@ this.gLIDER= new Glider (this.canvas, this.spriteDef.GLIDER);
       
 }
 
+// Vorläufige Events
+
+handleEvent: function(e) {
+    return (function(evtType, events) {
+      switch (evtType) {
+        case events.KEYDOWN:
+        case events.TOUCHSTART:
+        case events.MOUSEDOWN:
+          this.onKeyDown(e);
+          break;
+        case events.KEYUP:
+        case events.TOUCHEND:
+        case events.MOUSEUP:
+          this.onKeyUp(e);
+          break;
+      }
+    }.bind(this))(e.type, glider.events);
+  },
 
 
 
