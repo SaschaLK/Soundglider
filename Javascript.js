@@ -58,6 +58,8 @@ var isMobile = ????
 
 --------------------------------------------------
 
+window['gLIDER'] =gLIDER;
+
 var FPS = 60;
 
 var STANDARD_BREITE = 1000;
@@ -170,7 +172,7 @@ this.canvas = createCanvas(this.containerEl, this.dimensionen.BREITE,
       
 // Draw - Glider
 
-this.gLIDER= new Gider (this.canvas, this.spriteDef.GLIDER);
+this.gLIDER= new Glider (this.canvas, this.spriteDef.GLIDER);
 
       
 }
