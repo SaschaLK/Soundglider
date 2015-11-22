@@ -19,7 +19,7 @@ var glider = function (Container_id, optconfig) {
 
 glider_instanz = this;
 
-
+this.outerContainerEl = document.querySelector(outerContainerId);
 this.config = optconfig ;
 
 this.dimensionen = glider.stantardDimensionen;
@@ -159,20 +159,18 @@ setSpeed: function(opt_Geschw) {
 
 init: function () {
       
-      var canvas = document.getElementById('canvas');
-            if (canvas && canvas.getContext) {
-                  var ctx = canvas.getContext("2d");
-                   if (ctx) {
-                        ctx.fillStyle = '#f7f7f7';
-                        ctx.fillRect(0,0,ctx.canvas.width, ctx.canvas.height);
+this.canvas = createCanvas(this.containerEl, this.dimensionen.BREITE,
+        this.dimensionen.HOEHE, glider.classes.PLAYER);      
+        
+                  this.canvasCtx = this.canvas.getContext("2d");
+                  this.canvasCtx.fillStyle = '#f7f7f7';
+                  this.canvasCtx.fil();
+    
 
-      return canvas;
-    }
-}
       
 // Draw - Glider
 
-this.gLider= new Gider (this.canvas, this.spriteDef.GLIDER);
+this.gLIDER= new Gider (this.canvas, this.spriteDef.GLIDER);
 
       
 }
