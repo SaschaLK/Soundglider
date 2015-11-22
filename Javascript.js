@@ -142,16 +142,16 @@ var x = x2 - x1,
 */
 
 
-setSpeed: function(opt_speed) {
-    var speed = opt_speed || this.currentSpeed;
+setSpeed: function(opt_Geschw) {
+    var geschw = opt_geschw || this.aktuelleGeschw;
  
  // Reduziert die Geschwindigkeit bei Mobile-Screens.
-    if (this.dimensions.WIDTH < DEFAULT_WIDTH) {
-      var mobileSpeed = speed * this.dimensions.WIDTH / DEFAULT_WIDTH *
+    if (this.dimensionen.BREITE < STANDARD_BREITE) {
+      var mobileGeschw = Geschw * this.dimensions.WIDTH / DEFAULT_WIDTH *
           this.config.MOBILE_SPEED_COEFFICIENT;
-      this.currentSpeed = mobileSpeed > speed ? speed : mobileSpeed;
-    } else if (opt_speed) {
-      this.currentSpeed = opt_speed;
+      this.currentSpeed = mobileSpeed > Geschw ? Geschw : mobileGeschw;
+    } else if (opt_Geschw) {
+      this.aktuelleGeschw = opt_Geschw;
     }
   },
 
