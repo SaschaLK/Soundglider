@@ -232,6 +232,22 @@ handleEvent: function(e) {
     }.bind(this))(e.type, glider.events);
   },
 
+// Bindet die Tastatur / Maus / Touch befehle
+  startListening: function() {
+    // Tastatur
+    document.addEventListener(glider.events.KEYDOWN, this);
+    document.addEventListener(glider.events.KEYUP, this);
+    if (isMOBILE) {
+      // Mobil Touch
+      this.touchController.addEventListener(glider.events.TOUCHSTART, this);
+      this.touchController.addEventListener(glider.events.TOUCHEND, this);
+      this.containerEl.addEventListener(glider.events.TOUCHSTART, this);
+    } else {
+      // Maus
+      document.addEventListener(glider.events.MOUSEDOWN, this);
+      document.addEventListener(glider.events.MOUSEUP, this);
+    }
+  },
 
 
     }
