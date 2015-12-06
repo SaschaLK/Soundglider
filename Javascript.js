@@ -60,15 +60,16 @@ if (this.isDisabled()) {
 
 window['gLIDER'] =gLIDER;
 
-//Display Anpassung - noch unklar wie es umsetzbar ist
+//Display Anpassung 
 ------------------------------------------------
-var isHIDPI = ????
+var isHIDPI = window.devicePixelRatio > 1;
 
-var isTouch = ????
+var isTouch =  window.navigator.userAgent.indexOf('CriOS') > -1 ||
+    window.navigator.userAgent == 'UIWebViewForStaticFileContent';
 
-var isIOS = ????
+var isIOS = window.navigator.userAgent.indexOf('Mobi') > -1 || isIOS;
 
-var isMobile = ????
+var isMobile = 'ontouchstart' in window;
 
 
 --------------------------------------------------
@@ -85,7 +86,6 @@ glider.standardDimensionen = {
 ---------------------------------------------------
 
 // Variabeln kommen noch nach absprache, muss erstmal gucken wie ich die Bewegung hinbekomme
-
 glider.optcon = {
       GESCHW:  ,
       MAX_GESCHW:  ,
@@ -108,6 +108,14 @@ glider.hindernissDefinition = {
 
 };
 
+glider.classes = {
+      CANVAS: 'glider-canvas',
+      CONTAINER: 'glider-container',
+      CRASHED: 'crashed',
+      TOUCH_CONTROLLER: 'controller'
+}
+
+
 -------------------------------------------------------------------------
 
 // Alternative, Steuerung mit Maus anstatt Tastatur vielleciht sogar umsetzbar mit TOUCH - Work-in-Progress
@@ -120,7 +128,7 @@ velX = (tx/dist)*thrust;
 velY = (ty/dist)*thrust;
 */
 --------------------------------------------------------------------
-// Bewegung bei Pc, touch kommt noch
+// Bewegung bei Pc, Mapping der Tastatur
 
 glider.Tasten = {
   SPRINGEN: {'38': 1, '32': 1},  // Pfeil-hoch, Leerstaste
@@ -187,8 +195,23 @@ this.canvas = createCanvas(this.containerEl, this.dimensionen.BREITE,
 
 this.gLIDER= new Glider (this.canvas, this.spriteDef.GLIDER);
 
-      
+if (isMOBILE) {
+      this.createTouchController();
+    }
+    this.startListening();
+    this.update();
+    
+  },
+   
 }
+
+// Erschafft den Touch-Controller
+createTouchController: function() {
+    this.touchController = document.createElement('div');
+    this.touchController.className = glider.classes.TOUCH_CONTROLLER;
+  },
+
+
 
 // Vorläufige Events
 
