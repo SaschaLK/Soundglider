@@ -1,5 +1,7 @@
 Einarbeitung in Javascript - Daniel (Mitte Oktober)
 
+Werde eventuell auch schon Platzhalter einbauen für die Sprites -- da ja diese nicht so wichtig sind
+
 Erste deklarieungen der Objekte - Daniel (Ende - Anfang November)
 ohne genaue Variabeln da diese zur Diskussion stehen
 Variabeln zur Unterscheidung von Geräten deklariert, umsetzung noch unklar
@@ -13,6 +15,7 @@ Hindernis-Objekte deklariert, noch unklar wie gross sie sein sollen
 Touch-Controller erschaffen - Daniel (Anfang Dezember)
 Klassen erschaffen
 Geräte Unterscheidung deklariert
+Verwertung von key up key down
 
 
 
