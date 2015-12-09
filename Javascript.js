@@ -86,7 +86,7 @@ glider.standardDimensionen = {
 ---------------------------------------------------
 
 // Variabeln kommen noch nach absprache, muss erstmal gucken wie ich die Bewegung hinbekomme
-glider.optcon = {
+glider.optconfig = {
       GESCHW:  ,
       MAX_GESCHW:  ,
       GRAVITY:  ,
@@ -146,8 +146,6 @@ glider.events = {
   MOUSEUP: 'mouseup',
   TOUCHEND: 'touchend',
   TOUCHSTART: 'touchstart',
-....
-
 };
 
 
@@ -248,7 +246,54 @@ handleEvent: function(e) {
       document.addEventListener(glider.events.MOUSEUP, this);
     }
   },
+// Entfernt den Listener
+ stopListening: function() {
+    document.removeEventListener(glider.events.KEYDOWN, this);
+    document.removeEventListener(glider.events.KEYUP, this);
+    if (IS_MOBILE) {
+      this.touchController.removeEventListener(glider.events.TOUCHSTART, this);
+      this.touchController.removeEventListener(gliderr.events.TOUCHEND, this);
+      this.containerEl.removeEventListener(glider.events.TOUCHSTART, this);
+    } else {
+      document.removeEventListener(glider.events.MOUSEDOWN, this);
+      document.removeEventListener(glider.events.MOUSEUP, this);
+    }
+  },
 
+// Verwertet die Eingabe key-down
+
+onKeyDown: function(e) {
+    
+    if (e.target != this.detailsButton) {
+      if (!this.crashed && (glider.Tasten.SPRINGEN[e.keyCode] ||
+           e.type == glider.events.TOUCHSTART)) {
+        if (!this.activated) {
+          this.activated = true;
+
+        }
+        if (!this.gLider.jumping && !this.gLider.ducking) {
+          this.gLider.startJump(this.currentSpeed);
+        }
+      }
+      if (this.crashed && e.type == glider.events.TOUCHSTART &&
+          e.currentTarget == this.containerEl) {
+        this.restart();
+      }
+    }
+    if (this.activated && !this.crashed && glider.Tasten.DUCKEN[e.keyCode]) {
+      e.preventDefault();
+      if (this.gLider.jumping) {
+
+        this.gLider.setSpeedDrop();
+      } else if (!this.gLider.jumping && !this.gLider.ducking) {
+            
+        this.gLider.setDuck(true);
+      }
+    }
+  },
+
+// Verwertet Key-up
+...
 
     }
 )
