@@ -2,8 +2,6 @@
 /*
 Einarbeitung in Javascript ist im Gang
 
-Noch unklar wie die Bewegung genau umsetzbar ist,
-Ich habe im moment eine gewisse Vorstellung (Bild bewegt sich nicht die Figur)
 
 */
 
@@ -21,6 +19,7 @@ glider_instanz = this;
 
 this.outerContainerEl = document.querySelector(outerContainerId);
 this.config = optconfig ;
+this.containerEl = null;
 
 this.dimensionen = glider.stantardDimensionen;
 
@@ -41,7 +40,7 @@ this.hinderniss = [];
 this.zeit = 0;
 this.gliderZeit = 0;
 this.msperFrame = 1000 / FPS;
-this.aktuelleGeschw. = this.optcon.GESCHW;
+this.aktuelleGeschw. = this.optconfig.GESCHW;
 
 this.playCount = 0;
 
@@ -95,6 +94,7 @@ glider.optconfig = {
       GESCHW_FALL_KOEFFIZIENT:  ,
       BESCHLEUNIGUNG:   ,
       MOBILE_GESCHW_KOEFFIZIENT:   ,
+      GAMEOVER_CLEAR_TIME:  ,
       
       ....
 
@@ -127,6 +127,7 @@ var tx = targetX - x,
 velX = (tx/dist)*thrust;
 velY = (ty/dist)*thrust;
 */
+
 --------------------------------------------------------------------
 // Bewegung bei Pc, Mapping der Tastatur
 
@@ -148,7 +149,16 @@ glider.events = {
   TOUCHSTART: 'touchstart',
 };
 
+glider.spriteDef = {
+      
+      LDPI: {
+            
+      }
 
+      HDPI: {
+            
+      }
+}
 
 //Hindernisse bzw Grösse und Höhe noch unklar sowie Position
 
@@ -193,6 +203,8 @@ this.canvas = createCanvas(this.containerEl, this.dimensionen.BREITE,
 
 this.gLIDER= new Glider (this.canvas, this.spriteDef.GLIDER);
 
+this.outerContainerEl.appendChild(this.containerEl);
+
 if (isMOBILE) {
       this.createTouchController();
     }
@@ -231,16 +243,22 @@ handleEvent: function(e) {
   },
 
 // Bindet die Tastatur / Maus / Touch befehle
+
   startListening: function() {
+        
     // Tastatur
     document.addEventListener(glider.events.KEYDOWN, this);
     document.addEventListener(glider.events.KEYUP, this);
+    
     if (isMOBILE) {
-      // Mobil Touch
+          
+      // Mobil-Touch
       this.touchController.addEventListener(glider.events.TOUCHSTART, this);
       this.touchController.addEventListener(glider.events.TOUCHEND, this);
       this.containerEl.addEventListener(glider.events.TOUCHSTART, this);
+      
     } else {
+          
       // Maus
       document.addEventListener(glider.events.MOUSEDOWN, this);
       document.addEventListener(glider.events.MOUSEUP, this);
@@ -248,13 +266,18 @@ handleEvent: function(e) {
   },
 // Entfernt den Listener
  stopListening: function() {
+       
     document.removeEventListener(glider.events.KEYDOWN, this);
     document.removeEventListener(glider.events.KEYUP, this);
+    
     if (IS_MOBILE) {
+          
       this.touchController.removeEventListener(glider.events.TOUCHSTART, this);
       this.touchController.removeEventListener(gliderr.events.TOUCHEND, this);
       this.containerEl.removeEventListener(glider.events.TOUCHSTART, this);
+      
     } else {
+          
       document.removeEventListener(glider.events.MOUSEDOWN, this);
       document.removeEventListener(glider.events.MOUSEUP, this);
     }
@@ -262,11 +285,11 @@ handleEvent: function(e) {
 
 // Verwertet die Eingabe key-down
 
-onKeyDown: function(e) {
-    
-    if (e.target != this.detailsButton) {
-      if (!this.crashed && (glider.Tasten.SPRINGEN[e.keyCode] ||
-           e.type == glider.events.TOUCHSTART)) {
+onKeyDown: function(k) {
+
+      if (!this.crashed && (glider.Tasten.SPRINGEN[k.keyCode] ||
+           k.type == glider.events.TOUCHSTART)) {
+                 
         if (!this.activated) {
           this.activated = true;
 
@@ -275,13 +298,14 @@ onKeyDown: function(e) {
           this.gLider.startJump(this.currentSpeed);
         }
       }
-      if (this.crashed && e.type == glider.events.TOUCHSTART &&
-          e.currentTarget == this.containerEl) {
+      if (this.crashed && k.type == glider.events.TOUCHSTART &&
+          k.currentTarget == this.containerEl) {
         this.restart();
       }
-    }
-    if (this.activated && !this.crashed && glider.Tasten.DUCKEN[e.keyCode]) {
-      e.preventDefault();
+    
+    if (this.activated && !this.crashed && glider.Tasten.DUCKEN[k.keyCode]) {
+      k.preventDefault();
+      
       if (this.gLider.jumping) {
 
         this.gLider.setSpeedDrop();
@@ -291,9 +315,37 @@ onKeyDown: function(e) {
       }
     }
   },
-
+ 
 // Verwertet Key-up
-...
 
+onKeyUp: function(k) {
+      
+    var keyCode = String(k.keyCode);
+    var isjumpKey = glider.Tasten.JUMP[keyCode] ||
+       k.type == glider.events.TOUCHEND ||
+       k.type == glider.events.MOUSEDOWN;
+       
+    if (this.isRunning() && isjumpKey) {
+      this.gLider.endJump();
+    } else if (glider.Tasten.DUCKEN[keyCode]) {
+      this.gLider.speedDrop = false;
+      this.gLider.setDuck(false);
+    } else if (this.crashed) {
+
+      var deltaTime = getTimeStamp() - this.time;
+      
+      if (glider.Tasten.RESTART[keyCode] || this.isLeftClickOnCanvas(k) ||
+      (deltaTime >= this.optconfig.GAMEOVER_CLEAR_TIME &&
+      glider.Tasten.SPRUNG[keyCode])) {
+            
+        this.restart();
+      }
+    } else if (this.paused && isjumpKey) {
+
+      this.gLider.reset();
+      this.play();
+    }
+  },
+  
     }
 )
