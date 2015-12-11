@@ -10,3 +10,21 @@ Anmerkungen eingesetzt
 CSS erweitert und verbessert
 Am Linkframe gearbeitet
  - Sascha (13.11.2015)
+ 
+=== Feedback Alpers, Dez 11 ===
+
+Passable erste Ansätze für eine Dokumentation, allerdings hilft das einem Außenstehenden noch nicht,
+zu erkennen, was der aktuelle Stand des Projekts ist, bzw. warum welche Entscheidungen getroffen bzw. geändert wurden.
+
+Nachtrag:
+
+Nachdem ich die HTML-Dokumente durchgesehen habe hier ein essentieller Hinweis, den Sie aber auch an einigen Stellen
+in den Dokumten finden werden: Sobald ein Element an mehr als einer Stelle genutzt wird, müssen Sie ihn als Software-
+entwickler auslagern. Das hat nichts mit der Beherrschung einer Programmiersprache zu tun, sondern mit der
+Entwicklung hochwertiger Software. Es ist auch keine anspruchsvolle Aufgabe, sondern erfordert einzig
+am Anfang etwas mehr Arbeit zu investieren, um danach deutlich weniger Arbeit zu haben.
+
+Um das zusammenzufassen wird gerne auch von der Copy-Pest gesprochen: Wer häufig per Copy/Paste arbeitet, erzeugt
+Code, der die reinste Pest ist.
+
+=== Feedback Alpers, Ende ===

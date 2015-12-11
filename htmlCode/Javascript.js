@@ -7,6 +7,27 @@ Ich habe im moment eine gewisse Vorstellung (Bild bewegt sich nicht die Figur)
 
 */
 
+/*
+* === Feedback Alpers, Dez 11 ===
+*
+* Unter Umständen machen Sie hier den gleichen Denkfehler wie einige Ihrer Kommilitonen:
+* Mit dem Controller-Teil (also bei Ihnen JS statt PHP) sind Sie nur für die Änderungen
+* der HTML-Container verantwortlich, weil Sie lediglich die Funktionalität realisieren sollen.
+* 
+* Um also Bewegung ins Spiel zu bringen, könnten Sie beispielsweise als Reaktion auf den
+* Tastendruck "nach links" durch einen Nutzer eine Bilddatei, die bislang in einem
+* Feld einer Tabelle eingeblendet wird in dem links davon liegenden Feld der Tabelle
+* einblenden. In das ursprüngliche Feld der Tabelle müssten Sie dann ein anderes Bild einblenden.
+*
+* Wenn Sie dagegen den Hintergrund bewegen wollen, müssten Sie stattdessen alle anderen
+* Elemente um jeweils ein Feld der Tabelle verschieben.
+*
+* Wenn Sie mit Canvas arbeiten, wird das nicht gehen, aber Canvas ist auch eine Technik,
+* die ich für Erstsemester noch nicht unbedingt empfehlen würde.
+*
+* === Feedback Alpers, Ende ===
+*/
+
 (function() {
 
 /* Glider deklaration und Bewegungsattribute
@@ -91,6 +112,20 @@ glider.hindernissDefinition = {
 
 // Alternative, Steuerung mit Maus anstatt Tastatur vielleciht sogar umsetzbar mit TOUCH - Work-in-Progress
 
+/*
+* === Feedback Alpers, Dez 11 ===
+* 
+* Schauen Sie erst einmal, dass Sie eine Variante fertig stellen.
+* Alternative Steuerungen sind natürlich etwas schönes, aber es ist essentiell,
+* dass überhaupt eine Steuerung funktioniert.
+*
+* Ist das gewährleistet, dann sollte als nächstes sichergestellt werden,
+* dass zumindest ein grundlegende Spielablauf realisiert ist, bevor
+* Sie sich an Erweiterungen wie mehr Steuerungen setzen.
+*
+* === Feedback Alpers, Ende ===
+*/
+
 var tx = targetX - x,
     ty = targetY - y,
     dist = Math.sqrt(tx*tx+ty*ty);
@@ -154,3 +189,30 @@ var x = x2 - x1,
 
     }
 )
+
+/*
+* === Feedback Alpers, Dez 11 ===
+*
+* Sehr gut. Es ist klar zu erkennen, dass Sie sich kontinuierlich mit
+* dem Projekt beschäftigen und versuchen die entstehenden Probleme zu lösen.
+*
+* Allerdings ist auch erkennbar, dass Sie es noch nicht schaffen, Ihren Programmteil
+* mit dem HTML-Teil zu integrieren. Das ist aber wichtig für eine erfolgreiche Projektarbeit.
+*
+* Ansonsten machen Sie momentan den gleichen Fehler wie viele Einsteiger:
+* Sie versuchen einen Bereich perfekt zu lösen, anstatt zunächst zumindest eine lauffähige
+* Gesamtversion zu entwickeln. Bei Ihnen ist das der Teil, in dem es um die Steuerung des
+* Spiels geht. Wie gesagt sollten Sie sich hier für eine Variante entscheiden. Wenn
+* die funktioniert wenden Sie sich anderen Baustellen zu, um so zumindest eine erste
+* lauffähige Version des Programms zu entwickeln.
+*
+* Danach können Sie dann wieder in die Bereiche schauen, in denen Sie noch mehr Möglichkeiten
+* erreichen wollen.
+*
+* Beachten Sie aber bitte, dass Sie zunächst die Variante implementieren sollte, die
+* möglichst allen Systemen funktionieren sollte. Hier deshalb nochmal der Hinweis: Ihre
+* Aufgabe besteht darin, die Reaktion der Anwendung auf Eingaben von Nutzern zu programmieren.
+* Die Eingaben werden durch den HTML-Teil aufgenommen, sodass Fälle wie beispielsweise das 
+* Drücken einer Taste eigentlich nicht in Ihrem Teil abgefragt werden sollten.
+*
+* === Feedback Alpers, Ende ===
