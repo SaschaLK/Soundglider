@@ -1,0 +1,30 @@
+Einarbeitung in Javascript - Daniel (Mitte Oktober)
+
+Werde eventuell auch schon Platzhalter einbauen für die Sprites -- da ja diese nicht so wichtig sind
+
+Erste deklarieungen der Objekte - Daniel (Ende - Anfang November)
+ohne genaue Variabeln da diese zur Diskussion stehen
+Variabeln zur Unterscheidung von Geräten deklariert, umsetzung noch unklar
+Steuerungsmapping komplett, zumindest für Tastaur 
+
+Canvas deklariert und Glider Objekt initialisiert - Daniel ( Mitte November - Ende November)
+Eventhandler deklartiert
+Alternative Steuerung vorgeschlagen, sprich Steuerung per Mauszeiger anstatt Tastatur
+Hindernis-Objekte deklariert, noch unklar wie gross sie sein sollen
+
+Touch-Controller erschaffen - Daniel (Anfang Dezember)
+Klassen erschaffen
+Geräte Unterscheidung deklariert
+Verwertung von key up key down
+
+=== Feedback Alpers, Dez 11 ===
+
+Das ist zwar ein bischen sehr komprimiert formuliert, aber auf jeden Fall ein guter Einstieg
+in die Dokumentation des Projekts.
+
+Letztlich sollte ein Außenstehender anhand der Dokumentation sich schnell in den aktutellen
+Projektstand einarbeiten können und erkennen, warum welche Entscheidungen getroffen bzw. geändert
+wurden.
+
+=== Feedback Alpers, Ende ===
+

@@ -28,7 +28,12 @@ a:active {
     left:0;
     right:0;
 }
-
+#Vorschau {
+    position:absolute;
+    top:39%;
+    left:0;
+    right:0;
+}
 #game {
     position:absolute;
     top:39%;
