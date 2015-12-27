@@ -10,23 +10,9 @@
 	
 	<body>
 	<!-- Headline, evtl. nicht nötig durch Welcome.html -->
-		<header>
-			<p id=start>
-				<!-- Willkommen zu SOUNDGLIDER -->
-			</p>
-		</header>
-		<!-- Navigation-->
-		<nav>
-			<table> 
-				<tr>
-					<td><a href=Main.html>Startseite</a></td> 
-					<td><a href=Bts.html>Behind the scenes</a></td> 
-					<td><a href=Sonstiges.html>Sonstiges</a></td>
-				</tr>
-			</table>
-		</nav>
-		<!-- Start-->
-		<section>
+		<?php include('header.php'); ?>
+		<?php include('navigation.php'); ?>
+		<main>
 			<div id=game align=center>
 				<figure>
 				<audio autoplay>
@@ -48,21 +34,8 @@
 					</script>
 				</p>
 			</div>
-		</section>
-		<!-- Fusszeile-->
-		<footer>
-			<hr>
-			<p id=impressum>
-				<table align=center>
-				</tr>
-					<td><a href=Impressum.html>Impressum</a></td>
-					<td><a href=Thanks.html>Thanks</a></td>
-					<td><a href=Hilfe.html>Hilfe</a></td>
-					<td><a href=Rechte.html>Rechte</a></td>
-				</tr>
-				</table>
-			</p>
-		</footer>
+		</main>
+		<?php include('footer.php'); ?>
 		<!--
 		=== Feedback Alpers, Dez 11 ===
 		

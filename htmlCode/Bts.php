@@ -10,24 +10,10 @@
 	
 	<body>
 	<!-- Headline, evtl. nicht nötig durch Welcome.html -->
-		<header>
-			<p id=start>
-				<!-- Willkommen zu SOUNDGLIDER -->
-			</p>
-		</header>
-		<!-- Navigation-->
-		<nav>
-			<table> 
-				<tr>
-					<td><a href=Main.html>Startseite</a></td> 
-					<td><a href=Bts.html>Behind the scenes</a></td> 
-					<td><a href=Sonstiges.html>Sonstiges</a></td>
-				</tr>
-			</table>
-		</nav>
-		<!-- Content-->
-		<section>
-			<p id=HilfeText> <!-- Noch zu füllen -->
+		<?php include('header.php'); ?>
+		<?php include('navigation.php'); ?>
+		<main>
+			<p id=BtsText> <!-- Noch zu füllen -->
 				Lorem ipsum dolor sit amet, no nam zril putent, vis tollit alterum nominati no. 
 				Eam soleat theophrastus ex. Aperiri eleifend constituto pri at, cum an noster 
 				disputando. Nam in veniam audiam temporibus. Eos eu brute iudico sapientem. Munere 
@@ -43,38 +29,9 @@
 				legendos dissentiet ex, vel ut movet signiferumque, iisque aliquid has in. Sed 
 				placerat postulant cu. In vel graece fuisset, no error eligendi aliquando mel.
 			</p>
-		</section>
-		<!-- Fusszeile-->
-		<footer>
-			<hr>
-			<p id=impressum>
-				<table align=center>
-					</tr>
-						<td><a href=Impressum.html>Impressum</a></td>
-						<td><a href=Thanks.html>Thanks</a></td>
-						<td><a href=Hilfe.html>Hilfe</a></td>
-						<td><a href=Rechte.html>Rechte</a></td>
-					</tr>
-				</table>
-			</p>
-		</footer>
+		</main>
+		<?php include('footer.php'); ?>
 		
 	</body>
 
 </html>
-
-<!--
-=== Feedback Alpers, Dez 11 ===
-
-Gute Struktur, allerdings macht der Einsatz der <div>-Container keine Sinn:
-Sie haben hier mit genau das getan, was unter HTML 4.01 anstelle von Containern wie <header>, <footer> usw.
-genutzt wurde.
-
-Die Kommentare Content, Fusszeile usw. können Sie aus dem gleichen Grund löschen.
-
-Bitte nutzen Sie aber außerdem den <main>-Container.
-
-So sollten Sie beispielsweise den <div id=end> löschen und (wenn Sie die id beibehalten wollen) den footer-Container
-wie folgt erweitern: <footer id=end>. Allerdings sollte das gar nicht nötig sein.
-
-=== Feedback Alpers, Ende ===
