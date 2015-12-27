@@ -1,5 +1,3 @@
-<?php
-echo '
 <nav>
 	<table> 
 		<tr>
@@ -9,5 +7,3 @@ echo '
 		</tr>
 	</table>
 </nav>
-'
-?>
