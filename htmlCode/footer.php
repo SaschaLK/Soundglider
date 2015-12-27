@@ -1,13 +1,13 @@
 <footer id=end>
 	<hr>
-	<p>
+	<div>
 		<table align=center>
 		</tr>
-			<td><a href=Impressum.html>Impressum</a></td>
-			<td><a href=Thanks.html>Thanks</a></td>
-			<td><a href=Hilfe.html>Hilfe</a></td>
-			<td><a href=Rechte.html>Rechte</a></td>
+			<td><a href=Impressum.php>Impressum</a></td>
+			<td><a href=Thanks.php>Thanks</a></td>
+			<td><a href=Hilfe.php>Hilfe</a></td>
+			<td><a href=Rechte.php>Rechte</a></td>
 		</tr>
 		</table>
-	</p>
+	</div>
 </footer>

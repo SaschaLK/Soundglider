@@ -10,24 +10,10 @@
 	
 	<body>
 	<!-- Headline, evtl. nicht nötig durch Welcome.html -->
-		<header>
-			<p id=start>
-				<!-- Willkommen zu SOUNDGLIDER -->
-			</p>
-		</header>
-		<!-- Navigation-->
-		<nav>
-			<table> 
-				<tr>
-					<td><a href=Main.html>Startseite</a></td> 
-					<td><a href=Bts.html>Behind the scenes</a></td> 
-					<td><a href=Sonstiges.html>Sonstiges</a></td>
-				</tr>
-			</table>
-		</nav>
-		<!-- Content-->
-		<section>
-			<p id=RechteText> <!-- Noch zu füllen -->
+		<?php include('header.php'); ?>
+		<?php include('navigation.php'); ?>
+		<main>
+			<p id=ThanksText> <!-- Noch zu füllen -->
 				Lorem ipsum dolor sit amet, no nam zril putent, vis tollit alterum nominati no. 
 				Eam soleat theophrastus ex. Aperiri eleifend constituto pri at, cum an noster 
 				disputando. Nam in veniam audiam temporibus. Eos eu brute iudico sapientem. Munere 
@@ -43,21 +29,8 @@
 				legendos dissentiet ex, vel ut movet signiferumque, iisque aliquid has in. Sed 
 				placerat postulant cu. In vel graece fuisset, no error eligendi aliquando mel.
 			</p>
-		</section>
-		<!-- Fusszeile-->
-		<footer>
-			<hr>
-			<p id=impressum>
-				<table align=center>
-				</tr>
-					<td><a href=Impressum.html>Impressum</a></td>
-					<td><a href=Thanks.html>Thanks</a></td>
-					<td><a href=Hilfe.html>Hilfe</a></td>
-					<td><a href=Rechte.html>Rechte</a></td>
-				</tr>
-				</table>
-			</p>
-		</footer>
+		</main>
+		<?php include('footer.php'); ?>
 		
 	</body>
 

@@ -14,7 +14,7 @@
 		<main>
 			<div id=startknopf align=center> 
 				<button type=button>
-				<a href="MainActive.html"><img src=PlatzhalterStartKnopf.png></a>
+				<a href="MainActive.php"><img src=PlatzhalterStartKnopf.png></a>
 				</button>
 				<h6>
 				Watch your Volume
