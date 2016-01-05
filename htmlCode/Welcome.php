@@ -5,14 +5,13 @@
 	<head>
 		<link rel=stylesheet href=soundglider_style.css>
 		<title>Welcome to Soundglider</title>
-		<!-- Autoverlinkung zum Starscreen-->
+		<!-- Autoverlinkung zu Main-->
 		<meta charset=utf-8 http-equiv="refresh" content="5; url=Main.php">
 	</head>
 	
 	<body>
 	
 		<?php include('header.php'); ?>
-<!-- Content below-->
 		<main>
 			<div id=vorschau align=center>
 				<h1>Welcome</h1>

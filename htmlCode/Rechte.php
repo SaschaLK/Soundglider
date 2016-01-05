@@ -30,7 +30,6 @@
 				placerat postulant cu. In vel graece fuisset, no error eligendi aliquando mel.
 			</p>
 		</main>
-		<!-- Fusszeile-->
 		<?php include('footer.php'); ?>
 		
 	</body>
