@@ -2,30 +2,7 @@
 /*
 Einarbeitung in Javascript ist im Gang
 
-Noch unklar wie die Bewegung genau umsetzbar ist,
-Ich habe im moment eine gewisse Vorstellung (Bild bewegt sich nicht die Figur)
 
-*/
-
-/*
-* === Feedback Alpers, Dez 11 ===
-*
-* Unter Umständen machen Sie hier den gleichen Denkfehler wie einige Ihrer Kommilitonen:
-* Mit dem Controller-Teil (also bei Ihnen JS statt PHP) sind Sie nur für die Änderungen
-* der HTML-Container verantwortlich, weil Sie lediglich die Funktionalität realisieren sollen.
-* 
-* Um also Bewegung ins Spiel zu bringen, könnten Sie beispielsweise als Reaktion auf den
-* Tastendruck "nach links" durch einen Nutzer eine Bilddatei, die bislang in einem
-* Feld einer Tabelle eingeblendet wird in dem links davon liegenden Feld der Tabelle
-* einblenden. In das ursprüngliche Feld der Tabelle müssten Sie dann ein anderes Bild einblenden.
-*
-* Wenn Sie dagegen den Hintergrund bewegen wollen, müssten Sie stattdessen alle anderen
-* Elemente um jeweils ein Feld der Tabelle verschieben.
-*
-* Wenn Sie mit Canvas arbeiten, wird das nicht gehen, aber Canvas ist auch eine Technik,
-* die ich für Erstsemester noch nicht unbedingt empfehlen würde.
-*
-* === Feedback Alpers, Ende ===
 */
 
 (function() {
@@ -40,10 +17,17 @@ var glider = function (Container_id, optconfig) {
 
 glider_instanz = this;
 
+this.outerContainerEl = document.querySelector(outerContainerId);
 this.config = optconfig ;
+this.containerEl = null;
 
-this.glider 
-this.distanzMeter = 0;
+this.dimensionen = glider.stantardDimensionen;
+
+this.canvas = null;
+this.canvasCtx= null;
+
+this.gLIDER = null;
+this.distanzMeter = null;
 this.distanzGelaufen = 0;
 
 this.gestartet = false ;
@@ -56,19 +40,35 @@ this.hinderniss = [];
 this.zeit = 0;
 this.gliderZeit = 0;
 this.msperFrame = 1000 / FPS;
-this.aktuelleGeschw. = this.optcon.GESCHW;
+this.aktuelleGeschw. = this.optconfig.GESCHW;
 
 this.playCount = 0;
 
-//Display Anpassung - noch unklar wie es umsetzbar ist
+// Bilder
+
+this.bilder= {};
+this.bilderLaden= 0;
+
+if (this.isDisabled()) {
+      this.ladeInaktivGlider();
+} else {
+      this.bilderLaden();
+}
+
+}
+
+window['gLIDER'] =gLIDER;
+
+//Display Anpassung 
 ------------------------------------------------
-var isHIDPI = ????
+var isHIDPI = window.devicePixelRatio > 1;
 
-var isTouch = ????
+var isTouch =  window.navigator.userAgent.indexOf('CriOS') > -1 ||
+    window.navigator.userAgent == 'UIWebViewForStaticFileContent';
 
-var isIOS = ????
+var isIOS = window.navigator.userAgent.indexOf('Mobi') > -1 || isIOS;
 
-var isMobile = ????
+var isMobile = 'ontouchstart' in window;
 
 
 --------------------------------------------------
@@ -79,22 +79,22 @@ var STANDARD_BREITE = 1000;
 
 glider.standardDimensionen = {
      BREITE = STANDARD_BREITE;
-     HÖHE = 300; 
+     H�HE = 300; 
 };
 
 ---------------------------------------------------
 
 // Variabeln kommen noch nach absprache, muss erstmal gucken wie ich die Bewegung hinbekomme
-
-glider.optcon = {
+glider.optconfig = {
       GESCHW:  ,
       MAX_GESCHW:  ,
       GRAVITY:  ,
-      MIN_SPRUNG_HÖHE:   ,
+      MIN_SPRUNG_H�HE:   ,
       INITIAL_SPRUNG_SCHWUNG:   ,
       GESCHW_FALL_KOEFFIZIENT:  ,
       BESCHLEUNIGUNG:   ,
       MOBILE_GESCHW_KOEFFIZIENT:   ,
+      GAMEOVER_CLEAR_TIME:  ,
       
       ....
 
@@ -108,40 +108,36 @@ glider.hindernissDefinition = {
 
 };
 
+glider.classes = {
+      CANVAS: 'glider-canvas',
+      CONTAINER: 'glider-container',
+      CRASHED: 'crashed',
+      TOUCH_CONTROLLER: 'controller'
+}
+
+
 -------------------------------------------------------------------------
 
 // Alternative, Steuerung mit Maus anstatt Tastatur vielleciht sogar umsetzbar mit TOUCH - Work-in-Progress
-
 /*
-* === Feedback Alpers, Dez 11 ===
-* 
-* Schauen Sie erst einmal, dass Sie eine Variante fertig stellen.
-* Alternative Steuerungen sind natürlich etwas schönes, aber es ist essentiell,
-* dass überhaupt eine Steuerung funktioniert.
-*
-* Ist das gewährleistet, dann sollte als nächstes sichergestellt werden,
-* dass zumindest ein grundlegende Spielablauf realisiert ist, bevor
-* Sie sich an Erweiterungen wie mehr Steuerungen setzen.
-*
-* === Feedback Alpers, Ende ===
-*/
-
 var tx = targetX - x,
     ty = targetY - y,
     dist = Math.sqrt(tx*tx+ty*ty);
   
 velX = (tx/dist)*thrust;
 velY = (ty/dist)*thrust;
+*/
 
 --------------------------------------------------------------------
-// Bewegung bei Pc, touch kommt noch
+// Bewegung bei Pc, Mapping der Tastatur
+
 glider.Tasten = {
   SPRINGEN: {'38': 1, '32': 1},  // Pfeil-hoch, Leerstaste
   DUCKEN: {'40': 1},  // Pfeil_runter
   RESTART: {'13': 1}  // Enter
 };
 
-//Weitere Events möglich
+//Weitere Events m�glich
 
 glider.events = {
   CLICK: 'click',
@@ -149,70 +145,207 @@ glider.events = {
   KEYUP: 'keyup',
   MOUSEDOWN: 'mousedown',
   MOUSEUP: 'mouseup',
-  TOUCHEND: ,
-  TOUCHSTART: ,
-....
-
+  TOUCHEND: 'touchend',
+  TOUCHSTART: 'touchstart',
 };
 
+glider.spriteDef = {
+      
+      LDPI: {
+            
+      }
 
-// Canvas ???? Platzhalter
-
-var canvas = document.getElementById('canvas');
-if (canvas && canvas.getContext) {
-   var ctx = canvas.getContext("2d");
-   if (ctx) {
-      ctx.fillStyle = "#9FC0D0";
-      ctx.fillRect(0,0,ctx.canvas.width, ctx.canvas.height);
-
-      return canvas;
-    }
+      HDPI: {
+            
+      }
 }
 
-// Draw-Glider
-
-.....
-
-
-//Hindernisse bzw Grösse und Höhe noch unklar sowie Position
+//Hindernisse bzw Gr�sse und H�he noch unklar sowie Position
 
 hinderniss.blockKlein = .... ;
 hinderniss.blockGross = ...;
 
 // Kollisionsabfrage mit Hindernissen Work-in-Progress
-
+/*
 var x = x2 - x1,
     y = y2 - y1,
     distance = Math.sqrt(x*x + y*y);
+*/
+
+
+setSpeed: function(opt_Geschw) {
+    var geschw = opt_geschw || this.aktuelleGeschw;
+ 
+ // Reduziert die Geschwindigkeit bei Mobile-Screens.
+    if (this.dimensionen.BREITE < STANDARD_BREITE) {
+      var mobileGeschw = Geschw * this.dimensions.WIDTH / DEFAULT_WIDTH *
+          this.config.MOBILE_SPEED_COEFFICIENT;
+      this.currentSpeed = mobileSpeed > Geschw ? Geschw : mobileGeschw;
+    } else if (opt_Geschw) {
+      this.aktuelleGeschw = opt_Geschw;
+    }
+  },
+
+// Game - INIT
+
+function init () {
+      
+this.canvas = createCanvas(this.containerEl, this.dimensionen.BREITE,
+        this.dimensionen.HOEHE, glider.classes.PLAYER);      
+        
+                  this.canvasCtx = this.canvas.getContext("2d");
+                  this.canvasCtx.fillStyle = '#f7f7f7';
+                  this.canvasCtx.fil();
+    
+
+      
+// Draw - Glider
+
+this.gLIDER= new Glider (this.canvas, this.spriteDef.GLIDER);
+
+this.outerContainerEl.appendChild(this.containerEl);
+
+if (isMOBILE) {
+      this.createTouchController();
+    }
+    this.startListening();
+    this.update();
+    
+  },
+   
+}
+
+// Erschafft den Touch-Controller
+createTouchController: function() {
+    this.touchController = document.createElement('div');
+    this.touchController.className = glider.classes.TOUCH_CONTROLLER;
+  },
 
 
 
+// Vorl�ufige Events
+
+handleEvent: function(e) {
+    return (function(evtType, events) {
+      switch (evtType) {
+        case events.KEYDOWN:
+        case events.TOUCHSTART:
+        case events.MOUSEDOWN:
+          this.onKeyDown(e);
+          break;
+        case events.KEYUP:
+        case events.TOUCHEND:
+        case events.MOUSEUP:
+          this.onKeyUp(e);
+          break;
+      }
+    }.bind(this))(e.type, glider.events);
+  },
+
+// Bindet die Tastatur / Maus / Touch befehle
+
+  startListening: function() {
+        
+    // Tastatur
+    document.addEventListener(glider.events.KEYDOWN, this);
+    document.addEventListener(glider.events.KEYUP, this);
+    
+    if (isMOBILE) {
+          
+      // Mobil-Touch
+      this.touchController.addEventListener(glider.events.TOUCHSTART, this);
+      this.touchController.addEventListener(glider.events.TOUCHEND, this);
+      this.containerEl.addEventListener(glider.events.TOUCHSTART, this);
+      
+    } else {
+          
+      // Maus
+      document.addEventListener(glider.events.MOUSEDOWN, this);
+      document.addEventListener(glider.events.MOUSEUP, this);
+    }
+  },
+// Entfernt den Listener
+ stopListening: function() {
+       
+    document.removeEventListener(glider.events.KEYDOWN, this);
+    document.removeEventListener(glider.events.KEYUP, this);
+    
+    if (IS_MOBILE) {
+          
+      this.touchController.removeEventListener(glider.events.TOUCHSTART, this);
+      this.touchController.removeEventListener(gliderr.events.TOUCHEND, this);
+      this.containerEl.removeEventListener(glider.events.TOUCHSTART, this);
+      
+    } else {
+          
+      document.removeEventListener(glider.events.MOUSEDOWN, this);
+      document.removeEventListener(glider.events.MOUSEUP, this);
+    }
+  },
+
+// Verwertet die Eingabe key-down
+
+onKeyDown: function(k) {
+
+      if (!this.crashed && (glider.Tasten.SPRINGEN[k.keyCode] ||
+           k.type == glider.events.TOUCHSTART)) {
+                 
+        if (!this.activated) {
+          this.activated = true;
+
+        }
+        if (!this.gLider.jumping && !this.gLider.ducking) {
+          this.gLider.startJump(this.currentSpeed);
+        }
+      }
+      if (this.crashed && k.type == glider.events.TOUCHSTART &&
+          k.currentTarget == this.containerEl) {
+        this.restart();
+      }
+    
+    if (this.activated && !this.crashed && glider.Tasten.DUCKEN[k.keyCode]) {
+      k.preventDefault();
+      
+      if (this.gLider.jumping) {
+
+        this.gLider.setSpeedDrop();
+      } else if (!this.gLider.jumping && !this.gLider.ducking) {
+            
+        this.gLider.setDuck(true);
+      }
+    }
+  },
+ 
+// Verwertet Key-up
+
+onKeyUp: function(k) {
+      
+    var keyCode = String(k.keyCode);
+    var isjumpKey = glider.Tasten.JUMP[keyCode] ||
+       k.type == glider.events.TOUCHEND ||
+       k.type == glider.events.MOUSEDOWN;
+       
+    if (this.isRunning() && isjumpKey) {
+      this.gLider.endJump();
+    } else if (glider.Tasten.DUCKEN[keyCode]) {
+      this.gLider.speedDrop = false;
+      this.gLider.setDuck(false);
+    } else if (this.crashed) {
+
+      var deltaTime = getTimeStamp() - this.time;
+      
+      if (glider.Tasten.RESTART[keyCode] || this.isLeftClickOnCanvas(k) ||
+      (deltaTime >= this.optconfig.GAMEOVER_CLEAR_TIME &&
+      glider.Tasten.SPRUNG[keyCode])) {
+            
+        this.restart();
+      }
+    } else if (this.paused && isjumpKey) {
+
+      this.gLider.reset();
+      this.play();
+    }
+  },
+  
     }
 )
-
-/*
-* === Feedback Alpers, Dez 11 ===
-*
-* Sehr gut. Es ist klar zu erkennen, dass Sie sich kontinuierlich mit
-* dem Projekt beschäftigen und versuchen die entstehenden Probleme zu lösen.
-*
-* Allerdings ist auch erkennbar, dass Sie es noch nicht schaffen, Ihren Programmteil
-* mit dem HTML-Teil zu integrieren. Das ist aber wichtig für eine erfolgreiche Projektarbeit.
-*
-* Ansonsten machen Sie momentan den gleichen Fehler wie viele Einsteiger:
-* Sie versuchen einen Bereich perfekt zu lösen, anstatt zunächst zumindest eine lauffähige
-* Gesamtversion zu entwickeln. Bei Ihnen ist das der Teil, in dem es um die Steuerung des
-* Spiels geht. Wie gesagt sollten Sie sich hier für eine Variante entscheiden. Wenn
-* die funktioniert wenden Sie sich anderen Baustellen zu, um so zumindest eine erste
-* lauffähige Version des Programms zu entwickeln.
-*
-* Danach können Sie dann wieder in die Bereiche schauen, in denen Sie noch mehr Möglichkeiten
-* erreichen wollen.
-*
-* Beachten Sie aber bitte, dass Sie zunächst die Variante implementieren sollte, die
-* möglichst allen Systemen funktionieren sollte. Hier deshalb nochmal der Hinweis: Ihre
-* Aufgabe besteht darin, die Reaktion der Anwendung auf Eingaben von Nutzern zu programmieren.
-* Die Eingaben werden durch den HTML-Teil aufgenommen, sodass Fälle wie beispielsweise das 
-* Drücken einer Taste eigentlich nicht in Ihrem Teil abgefragt werden sollten.
-*
-* === Feedback Alpers, Ende ===

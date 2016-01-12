@@ -29,7 +29,8 @@
 				-->
 				
 				<p> GAME
-<!-- An dieser Stelle sollte das Script folgen-->
+					<button onclick ='init()'>Starten</button>
+					<!-- An dieser Stelle sollte das Script folgen-->
 					<script src="Javascript.js">
 					</script>
 				</p>
