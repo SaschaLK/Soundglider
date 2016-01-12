@@ -13,8 +13,8 @@
 		<?php include('navigation.php'); ?>
 		<main>
 			<div id=startknopf align=center> 
-				<button type=button>
-				<a href="MainActive.php"><img src=PlatzhalterStartKnopf.png></a>
+				<button id=knopf type=button>
+				<a href="MainActive.php"><img id=bild src=PlatzhalterStartKnopf.png></a>
 				</button>
 				<h6>
 				Watch your Volume
