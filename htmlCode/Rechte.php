@@ -35,3 +35,13 @@
 	</body>
 
 </html>
+
+<!-- 
+=== Feedback Alpers, Jan 20 ===
+
+Dieses HTML-Dokument sowie Sonstiges.php, Bts.php und Thanks.php sind strukturell identisch.
+Also sollte es für alle vier nur ein HTML-Dokument (bzw. eine PHP-Datei) geben, bei denen die
+austauschbaren Inhalte per PHP gesteuert werden.
+
+=== Feedback Alpers, Ende ===
+-->

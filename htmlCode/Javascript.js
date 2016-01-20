@@ -349,3 +349,17 @@ onKeyUp: function(k) {
   
     }
 )
+
+/*
+=== Feedback Alpers, Jan 20 ===
+
+Leider hat sich an einer Sache nichts geändert: Sie versuchen hier, eine eigenständige Anwendung zu
+erstellen. Was Sie (mit dem Controller-Teil) dagegen tun sollen ist, die Funktionalität einzelner
+Container von HTML-Dokumenten zu realisieren.
+
+Das zeigt sich z.B. darin, dass Sie die Auflösung zu ermitteln versuchen, dass Sie prüfen, ob der Input
+per Touch oder Tastatur erfolgt, usw. Das ist für Ihre Aufgabe als Entwickler des Controllers
+gänzlich irrelevant.
+
+=== Feedback Alpers, Ende
+*/

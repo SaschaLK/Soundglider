@@ -49,3 +49,12 @@ Das ist annähernd mit Hilfe.html identisch.
  sie doch einfach als php-Dateien und nutzen die include()-Funktion.
  
  === Feedback Alpers, Ende ===
+-->
+
+<!--
+=== Feedback Alpers, Jan 20 ===
+
+Gute Auslagerung des mehrfach verwendeten Codes.
+
+=== Feedback Alpers, Ende ===
+-->

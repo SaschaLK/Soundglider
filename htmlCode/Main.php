@@ -27,3 +27,17 @@
 	</body>
 
 </html>
+
+<!--
+=== Feedback Alpers, Jan 20 ===
+
+Hier haben Sie leider noch eine Kleinigkeit, an der viele Entwickler immer noch festhalten:
+Ausrichtungen (align=center) gehören zum Design und sollten deshalb in CSS ausgelagert werden.
+Über das id-Attribut haben Sie hier ja auch schon alles vorbereitet, um die Anbindung an CSS zu
+realisieren.
+
+So können Sie dann später zentral Designänderungen durchführen und können sich bei der Entwicklung
+der HTML-Dokumente voll und ganz auf die Strukturierung konzentrieren.
+
+=== Feedback Alpers, Ende ===
+-->

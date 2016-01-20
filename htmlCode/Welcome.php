@@ -22,3 +22,12 @@
 	</body>
 
 </html>
+
+<!--
+=== Feedback Alpers, Jan 20 ===
+
+Hier müssen Sie aufpassen, denn oben haben Sie als Internationalisierung lang=de deklariert.
+Prüfen Sie bitte bei anderen Sprachen, welchen Wert lang bekommen muss.
+
+=== Feedback Alpes, Ende ===
+--> 

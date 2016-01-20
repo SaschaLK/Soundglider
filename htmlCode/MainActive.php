@@ -28,6 +28,16 @@
 				=== Feedback Alpers, Ende ===
 				-->
 				
+				<!--
+				=== Feedback Alpers, Jan 20 ===
+				
+				Fast Perfekt. Achten Sie bitte immer darauf, das Innere eines Containers
+				z.B. mit der Tabulatortaste einzurücken. So ist auf einen Blick erkennbar,
+				wie die Container strukturiert sind.
+				
+				=== Feedback Alpers, Ende ===
+				-->
+				
 				<p> GAME
 					<button onclick ='init()'>Starten</button>
 					<!-- An dieser Stelle sollte das Script folgen-->
