@@ -9,7 +9,7 @@ Einarbeitung in Javascript ist im Gang
 
 /* Glider deklaration und Bewegungsattribute
 */
-var glider = function (Container_id, optconfig) {
+function glider (Container_id, optconfig) {
       if (glider_instanz) {
       return glider_instanz; 
             }
@@ -79,7 +79,7 @@ var STANDARD_BREITE = 1000;
 
 glider.standardDimensionen = {
      BREITE = STANDARD_BREITE;
-     HÖHE = 300; 
+     HÃ–HE = 300; 
 };
 
 ---------------------------------------------------
@@ -89,7 +89,7 @@ glider.optconfig = {
       GESCHW:  ,
       MAX_GESCHW:  ,
       GRAVITY:  ,
-      MIN_SPRUNG_HÖHE:   ,
+      MIN_SPRUNG_HÃ–HE:   ,
       INITIAL_SPRUNG_SCHWUNG:   ,
       GESCHW_FALL_KOEFFIZIENT:  ,
       BESCHLEUNIGUNG:   ,
@@ -116,19 +116,8 @@ glider.classes = {
 }
 
 
--------------------------------------------------------------------------
 
-// Alternative, Steuerung mit Maus anstatt Tastatur vielleciht sogar umsetzbar mit TOUCH - Work-in-Progress
-/*
-var tx = targetX - x,
-    ty = targetY - y,
-    dist = Math.sqrt(tx*tx+ty*ty);
-  
-velX = (tx/dist)*thrust;
-velY = (ty/dist)*thrust;
-*/
 
---------------------------------------------------------------------
 // Bewegung bei Pc, Mapping der Tastatur
 
 glider.Tasten = {
@@ -137,7 +126,7 @@ glider.Tasten = {
   RESTART: {'13': 1}  // Enter
 };
 
-//Weitere Events möglich
+//Weitere Events mÃ¶glich
 
 glider.events = {
   CLICK: 'click',
@@ -160,19 +149,6 @@ glider.spriteDef = {
       }
 }
 
-//Hindernisse bzw Grösse und Höhe noch unklar sowie Position
-
-hinderniss.blockKlein = .... ;
-hinderniss.blockGross = ...;
-
-// Kollisionsabfrage mit Hindernissen Work-in-Progress
-/*
-var x = x2 - x1,
-    y = y2 - y1,
-    distance = Math.sqrt(x*x + y*y);
-*/
-
-
 setSpeed: function(opt_Geschw) {
     var geschw = opt_geschw || this.aktuelleGeschw;
  
@@ -187,12 +163,14 @@ setSpeed: function(opt_Geschw) {
   },
 
 // Game - INIT
-
+init ();
 function init () {
       
 this.canvas = createCanvas(this.containerEl, this.dimensionen.BREITE,
-        this.dimensionen.HOEHE, glider.classes.PLAYER);      
+        this.dimensionen.HOEHE, glider.classes.PLAYER);     
         
+                  this.canvas.breite = this.dimensionen.BREITE;
+                  this.canvas.hÃ¶he = this.dimensionen.HÃ–HE;
                   this.canvasCtx = this.canvas.getContext("2d");
                   this.canvasCtx.fillStyle = '#f7f7f7';
                   this.canvasCtx.fil();
@@ -213,7 +191,7 @@ if (isMOBILE) {
     
   },
    
-}
+
 
 // Erschafft den Touch-Controller
 createTouchController: function() {
@@ -221,9 +199,7 @@ createTouchController: function() {
     this.touchController.className = glider.classes.TOUCH_CONTROLLER;
   },
 
-
-
-// Vorläufige Events
+// VorlÃ¤ufige Events
 
 handleEvent: function(e) {
     return (function(evtType, events) {
@@ -347,19 +323,35 @@ onKeyUp: function(k) {
     }
   },
   
+  function createCanvas(container, breite, hÃ¶he, opt_classname) {
+  var canvas = document.createElement('canvas');
+  canvas.className = opt_classname ? gider.classes.CANVAS + ' ' +
+      opt_classname : gider.classes.CANVAS;
+  canvas.breite = breite;
+  canvas.hÃ¶he = hÃ¶he;
+  container.appendChild(canvas);
+  return canvas;
+}
+  
+  
+  
+  
+  
     }
 )
+
+
 
 /*
 === Feedback Alpers, Jan 20 ===
 
-Leider hat sich an einer Sache nichts geändert: Sie versuchen hier, eine eigenständige Anwendung zu
-erstellen. Was Sie (mit dem Controller-Teil) dagegen tun sollen ist, die Funktionalität einzelner
+Leider hat sich an einer Sache nichts geÃ¤ndert: Sie versuchen hier, eine eigenstÃ¤ndige Anwendung zu
+erstellen. Was Sie (mit dem Controller-Teil) dagegen tun sollen ist, die FunktionalitÃ¤t einzelner
 Container von HTML-Dokumenten zu realisieren.
 
-Das zeigt sich z.B. darin, dass Sie die Auflösung zu ermitteln versuchen, dass Sie prüfen, ob der Input
-per Touch oder Tastatur erfolgt, usw. Das ist für Ihre Aufgabe als Entwickler des Controllers
-gänzlich irrelevant.
+Das zeigt sich z.B. darin, dass Sie die AuflÃ¶sung zu ermitteln versuchen, dass Sie prÃ¼fen, ob der Input
+per Touch oder Tastatur erfolgt, usw. Das ist fÃ¼r Ihre Aufgabe als Entwickler des Controllers
+gÃ¤nzlich irrelevant.
 
 === Feedback Alpers, Ende
 */
