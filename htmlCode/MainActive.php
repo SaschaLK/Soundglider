@@ -44,7 +44,7 @@
 
 					<script src="Javascript.js">
 						function Start(); {
-    						var person = prompt("Bist du bereit?", "Wirklick?");
+    						var person = prompt("Bist du bereit?", "Wircklich?");
 						if (person != null) {
         					document.getElementById("init").innerHTML =
         					function init();
