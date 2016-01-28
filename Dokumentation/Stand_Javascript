@@ -17,6 +17,10 @@ Klassen erschaffen
 Geräte Unterscheidung deklariert
 Verwertung von key up key down
 
+Ende Januar 2016 - Daniel
+Einbindung des Scripts mit einer Eingabeaufforderung in die HTML-Datei
+function createCanvas - erschaffen
+
 === Feedback Alpers, Dez 11 ===
 
 Das ist zwar ein bischen sehr komprimiert formuliert, aber auf jeden Fall ein guter Einstieg
