@@ -37,13 +37,21 @@
 				
 				=== Feedback Alpers, Ende ===
 				-->
-				
-				<p> GAME
-					<button onclick ='init()'>Starten</button>
-					<!-- An dieser Stelle sollte das Script folgen-->
+				<!-- Änderungen von Daniel Ollhoff -->
+				<button onclick="Start()">Start</button>
+
+				<p id="init"></p>
+
 					<script src="Javascript.js">
+						function Start(); {
+    						var person = prompt("Bist du bereit?", "Wirklick?");
+						if (person != null) {
+        					document.getElementById("init").innerHTML =
+        					function init();
+    											}
+									}
 					</script>
-				</p>
+				<!-- Änderungen Ende -->
 			</div>
 		</main>
 		<?php include('footer.php'); ?>
