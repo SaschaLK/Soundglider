@@ -163,7 +163,7 @@ setSpeed: function(opt_Geschw) {
   },
 
 // Game - INIT
-init ();
+
 function init () {
       
 this.canvas = createCanvas(this.containerEl, this.dimensionen.BREITE,
