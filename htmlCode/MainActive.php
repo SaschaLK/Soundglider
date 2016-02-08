@@ -1,5 +1,16 @@
 <!doctype html>
 
+<html manifest="chache.manifest">
+	
+	CACHE MANIFEST
+	
+	/MainActive.php
+	/Javascript.js
+	/Main.php
+	/Hilfe.php
+	/loader.gif
+	/footer.php
+	
 <html lang=de>
 
 	<head>
