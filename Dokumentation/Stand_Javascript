@@ -21,6 +21,11 @@ Ende Januar 2016 - Daniel
 Einbindung des Scripts mit einer Eingabeaufforderung in die HTML-Datei
 function createCanvas - erschaffen
 
+Anfang Februar 2016 - Daniel Ollhoff
+
+Cache Manifest in der HTML MainActive Datei eingebunden wegen offline Nutzung
+Horizontline auf dem Canvas gezeichnet
+
 === Feedback Alpers, Dez 11 ===
 
 Das ist zwar ein bischen sehr komprimiert formuliert, aber auf jeden Fall ein guter Einstieg
