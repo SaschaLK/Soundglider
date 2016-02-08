@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html manifest="chache.manifest">
+<html manifest="cache.manifest">
 	
 	CACHE MANIFEST
 	
