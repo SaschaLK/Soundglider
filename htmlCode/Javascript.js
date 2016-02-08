@@ -1,11 +1,13 @@
 
 /*
-Einarbeitung in Javascript ist im Gang
+Die Variabeln mit den Kennwörtern Sprite bedeutet Sprite sheets für die Applikation
+und sind platzhalter es geht hier nur um denn Code und nicht um das visuelle.
+Genau so wie die Obstacles Arrays
 
 
 */
-
-(function() {
+start:
+(function start() {
 
 /* Glider deklaration und Bewegungsattribute
 */
@@ -246,7 +248,7 @@ handleEvent: function(e) {
     document.removeEventListener(glider.events.KEYDOWN, this);
     document.removeEventListener(glider.events.KEYUP, this);
     
-    if (IS_MOBILE) {
+    if (isMobile) {
           
       this.touchController.removeEventListener(glider.events.TOUCHSTART, this);
       this.touchController.removeEventListener(gliderr.events.TOUCHEND, this);
@@ -331,14 +333,72 @@ onKeyUp: function(k) {
   canvas.höhe = höhe;
   container.appendChild(canvas);
   return canvas;
-}
+};
+  
+  HorizonLine.dimensions = {
+  BREITE: 600,
+  HOEHE: 12,
+  YPOS: 127
+};
+  
+  function HorizonLine(canvas, spritePos) {
+  this.spritePos = spritePos;
+  this.canvas = canvas;
+  this.canvasCtx = canvas.getContext('2d');
+  this.sourceDimensions = {};
+  this.dimensions = HorizonLine.dimensions;
+  this.sourceXPos = [this.spritePos.x, this.spritePos.x +
+      this.dimensions.BREITE];
+  this.xPos = [];
+  this.yPos = 0;
+  this.bumpThreshold = 0.5;
+  this.setSourceDimensions();
+  this.draw();
+};
+
+HorizonLine.prototype = {
+
+  setSourceDimensions: function() {
+    for (var dimension in HorizonLine.dimensions) {
+      if (isHIDPI) {
+        if (dimension != 'YPOS') {
+          this.sourceDimensions[dimension] =
+              HorizonLine.dimensions[dimension] * 2;
+        }
+      } else {
+        this.sourceDimensions[dimension] =
+            HorizonLine.dimensions[dimension];
+      }
+      this.dimensions[dimension] = HorizonLine.dimensions[dimension];
+    }
+    this.xPos = [0, HorizonLine.dimensions.BREITE];
+    this.yPos = HorizonLine.dimensions.YPOS;
+  },
+  
+  getRandomType: function() {
+    return Math.random() > this.bumpThreshold ? this.dimensions.BREITE : 0;
+  },
+  
+    draw: function() {
+    this.canvasCtx.drawImage(glider.imageSprite, this.sourceXPos[0],
+        this.spritePos.y,
+        this.sourceDimensions.BREITE, this.sourceDimensions.HOEHE,
+        this.xPos[0], this.yPos,
+        this.dimensions.BREITE, this.dimensions.HOEHE);
+        this.canvasCtx.drawImage(Runner.imageSprite, this.sourceXPos[1],
+        this.spritePos.y,
+        this.sourceDimensions.BREITE, this.sourceDimensions.HOEHE,
+        this.xPos[1], this.yPos,
+        this.dimensions.BREITE, this.dimensions.HOEHE);
+  },
+  
   
   
   
   
   
     }
-)
+)();
 
 
 
