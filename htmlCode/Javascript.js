@@ -7,7 +7,7 @@ Genau so wie die Obstacles Arrays
 
 */
 start:
-(function start() {
+(start: function () {
 
 /* Glider deklaration und Bewegungsattribute
 */
@@ -81,7 +81,7 @@ var STANDARD_BREITE = 1000;
 
 glider.standardDimensionen = {
      BREITE = STANDARD_BREITE;
-     HÖHE = 300; 
+     HOEHE = 300; 
 };
 
 ---------------------------------------------------
