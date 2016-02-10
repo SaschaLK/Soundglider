@@ -54,13 +54,10 @@
 				<p id="init"></p>
 
 					<script src="Javascript.js">
-						function Start(); {
-    						var person = prompt("Bist du bereit?", "Wircklich?");
-						if (person != null) {
-        					document.getElementById("init").innerHTML =
-        					function start();
-    											}
-									}
+					<script src="Title.js">
+					
+						function Title(); 
+    						
 					</script>
 				<!-- Änderungen Ende -->
 			</div>
